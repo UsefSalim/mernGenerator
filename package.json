@@ -1,6 +1,6 @@
 {
   "name": "ucef",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "generator ,mern ,expressjs ,mongoDB,nodejs",
   "main": "server.js",
   "preferGlobal": true,
