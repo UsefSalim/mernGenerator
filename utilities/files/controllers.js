@@ -1,5 +1,6 @@
-exports.controllers = (modelName) => {
-  return `/// * -------------------------------------------------------------------------- ${modelName} Controllers
+exports.controllers = (
+  modelName
+) => `/// * -------------------------------------------------------------------------- ${modelName} Controllers
 // ------------- require mongoose ObjectId ----//
 const ObjectID = require('mongoose').Types.ObjectId;
 
@@ -110,5 +111,4 @@ exports.update${modelName} = async (req, res) => {
     res.status(400).json({ err });
   }
 };
-`
-}
+`;

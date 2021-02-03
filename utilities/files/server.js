@@ -1,5 +1,6 @@
-exports.server = (modelName) => {
-  return `require('dotenv').config({ path: './config/.env' });
+exports.server = (
+  modelName
+) => `require('dotenv').config({ path: './config/.env' });
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -30,5 +31,4 @@ mongoose
 
 //* ---- ---------------------------------Port APP
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log('app Listning on Port: localhost:'+PORT ));`
-}
+app.listen(PORT, () => console.log('app Listning on Port: localhost:'+PORT ));`;

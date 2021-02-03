@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 const program = require('commander');
+const chalk = require('chalk');
+
+const { log: l } = console;
 const {
   createController,
   createConfig,
@@ -22,9 +25,9 @@ program.version('1.0.0').description('test');
 
 program
   .option('-jv, --joivalidate', 'add validations')
-  .option('-m, --model', 'add model')
-  .option('-c, --controller', 'add controller')
-  .option('-r, --router', 'add router');
+  .option('-m , --model', 'add model')
+  .option('-c , --controller', 'add controller')
+  .option('-r , --router', 'add router');
 /// starter pack
 const options = program.opts();
 program
@@ -41,7 +44,12 @@ program
     readme();
     gitignore();
     scripts();
-    console.info(`application created succesfuly run -npm run dev-`);
+    l(
+      chalk.green(
+        'application created succesfuly run ',
+        `${chalk.underline.bgBlue('npm run dev')}!`
+      )
+    );
   });
 /// configurations Prettier and eslint
 
@@ -54,7 +62,12 @@ program
     prettier();
     vsCodeConfig();
     prettierScripts();
-    console.info('prettier configurate succesfully -> npm run eslint');
+    l(
+      chalk.green(
+        'prettier configurate succesfully ',
+        `${chalk.underline.bgBlue(' npm run eslint')}!`
+      )
+    );
   });
 
 program
@@ -63,12 +76,26 @@ program
   .description('create controller')
   .action((controllerName) => {
     createController(controllerName, false);
+    l(chalk.green(`${controllerName}.controller.js created succesfuly`));
     if (options.controller) {
-      console.log("la commande -c n'est pas autorisé dans un controller");
+      l(
+        chalk.red.underline.bold(
+          "la commande -c n'est pas autorisé dans un controller"
+        )
+      );
     }
-    if (options.model) createModel(controllerName);
-    if (options.joivalidate && options.model) createValidation(controllerName);
-    if (options.router) createRoute(controllerName);
+    if (options.model) {
+      createModel(controllerName);
+      l(chalk.green(`${controllerName}.model.js created succesfuly`));
+    }
+    if (options.joivalidate && options.model) {
+      createValidation(controllerName);
+      l(chalk.green(`${controllerName}.validations.js created succesfuly`));
+    }
+    if (options.router) {
+      createRoute(controllerName);
+      l(chalk.green(`${controllerName}.routes.js created succesfuly`));
+    }
   });
 
 program
@@ -78,11 +105,24 @@ program
   .action((modelName) => {
     createModel(modelName);
     if (options.model) {
-      console.log("la commande -m n'est pas autorisé dans un model");
+      l(
+        chalk.red.underline.bold(
+          "la commande -m n'est pas autorisé dans un model"
+        )
+      );
     }
-    if (options.joivalidate) createValidation(modelName);
-    if (options.controller) createController(modelName);
-    if (options.router) createRoute(controllerName);
+    if (options.joivalidate) {
+      createValidation(modelName);
+      l(chalk.green(`${modelName}.validations.js created succesfuly`));
+    }
+    if (options.controller) {
+      createController(modelName);
+      l(chalk.green(`${modelName}.controllers.js created succesfuly`));
+    }
+    if (options.router) {
+      createRoute(modelName);
+      l(chalk.green(`${modelName}.routes.js created succesfuly`));
+    }
   });
 
 program
@@ -92,11 +132,24 @@ program
   .action((routeName) => {
     createRoute(routeName);
     if (options.router) {
-      console.log("la commande -r n'est pas autorisé dans une route");
+      l(
+        chalk.red.underline.bold(
+          "la commande -r n'est pas autorisé dans une route"
+        )
+      );
     }
-    if (options.joivalidate && options.model) createValidation(routeName);
-    if (options.controller) createController(routeName);
-    if (options.model) createRoute(routeName);
+    if (options.joivalidate && options.model) {
+      createValidation(routeName);
+      l(chalk.green(`${routeName}.validations.js created succesfuly`));
+    }
+    if (options.controller) {
+      createController(routeName);
+      l(chalk.green(`${routeName}.controllers.js created succesfuly`));
+    }
+    if (options.model) {
+      createRoute(routeName);
+      l(chalk.green(`${routeName}.model.js created succesfuly`));
+    }
   });
 
 program.parse(process.args);

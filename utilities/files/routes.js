@@ -1,5 +1,4 @@
-exports.routes = (modelName) => {
-     return `const router = require('express').Router();
+exports.routes = (modelName) => `const router = require('express').Router();
 
 const {
   getAll,
@@ -49,5 +48,4 @@ router.delete('/', deletAll${modelName}s);
 */
 router.put('/:id', update${modelName});
 
-module.exports = router;`
-}
+module.exports = router;`;

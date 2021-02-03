@@ -1,5 +1,4 @@
-exports.model = (modelName) => {
-  return `const mongoose = require('mongoose');
+exports.model = (modelName) => `const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 //* create a ${modelName} Scheme
@@ -22,5 +21,4 @@ const ${modelName}Schema = new Schema({
   },
 });
 const ${modelName} = mongoose.model('${modelName}', ${modelName}Schema);
-module.exports = ${modelName};`
-}
+module.exports = ${modelName};`;

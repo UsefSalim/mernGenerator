@@ -1,5 +1,4 @@
-exports.validations = (modelName) => {
-  return `const Joi = require('@hapi/joi');
+exports.validations = (modelName) => `const Joi = require('joi');
 
 exports.${modelName}Validations = (data) => {
   const schema = Joi.object({
@@ -10,5 +9,4 @@ exports.${modelName}Validations = (data) => {
 
   return schema.validate(data);
 };
-`
-};
+`;

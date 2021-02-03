@@ -94,7 +94,7 @@ exports.prettierScripts = () => {
     const jsonPack = JSON.parse(data);
     if (!err) {
       jsonPack.scripts.eslint =
-        'npm i prettier eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-import eslint-config-airbnb-base';
+        'npm i -D prettier eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-import eslint-config-airbnb-base';
     }
     fs.writeFile(`./package.json`, JSON.stringify(jsonPack), (err) => {
       err ? console.log('err', err) : console.log('package.json updated !');

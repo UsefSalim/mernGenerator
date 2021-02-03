@@ -5,7 +5,7 @@ const { routes } = require('../files/routes')
 const { controllers } = require('../files/controllers')
 const { model } = require('../files/model')
 const { env } = require('../files/.env')
-const path = process.cwd();;
+const path = process.cwd();
 
 
 exports.createController = (modelName) => {
