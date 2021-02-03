@@ -31,7 +31,7 @@ program
 /// starter pack
 const options = program.opts();
 program
-  .command('make:server <ModelName>')
+  .command('  make:server <ModelName>')
   .alias('ms')
   .description('create squelette api with mongoose express nodejs joi')
   .action((modelName) => {
@@ -54,7 +54,7 @@ program
 /// configurations Prettier and eslint
 
 program
-  .command('make:prettier')
+  .command('  make:prettier')
   .alias('mp')
   .description('configurations and generate file prettier ans eslint ')
   .action(() => {
@@ -71,7 +71,7 @@ program
   });
 
 program
-  .command('make:controller <controllerName>')
+  .command('  make:controller <controllerName>')
   .alias('mc')
   .description('create controller')
   .action((controllerName) => {
@@ -99,7 +99,7 @@ program
   });
 
 program
-  .command('make:model <modelName>')
+  .command('  make:model <modelName>')
   .alias('mm')
   .description('create model')
   .action((modelName) => {
@@ -126,7 +126,7 @@ program
   });
 
 program
-  .command('make:route <routeName>')
+  .command('  make:route <routeName>')
   .alias('mr')
   .description('create Routes')
   .action((routeName) => {
