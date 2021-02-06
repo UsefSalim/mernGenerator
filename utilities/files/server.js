@@ -6,7 +6,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-// const ${modelName}Routes = require('./routes/${modelName}.routes');
+ const ${modelName}Routes = require('./routes/${modelName}.routes');
 
 const app = express();
 
@@ -27,7 +27,7 @@ mongoose
 
 //* -------------------------------------Use Routes
 
-// app.use('/api/todos', ${modelName}Routes);
+ app.use('/api/${modelName}', ${modelName}Routes);
 
 //* ---- ---------------------------------Port APP
 const PORT = process.env.PORT || 5000;

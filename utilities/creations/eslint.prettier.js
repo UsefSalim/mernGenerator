@@ -42,7 +42,7 @@ exports.prettier = () => {
 exports.eslint = () => {
   fs.appendFile(
     `${path}/.eslintrc.json`,
-    ` {
+    `{
       "env": {
         "browser": true,
         "commonjs": true,

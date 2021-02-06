@@ -5,10 +5,10 @@ exports.controllers = (
 const ObjectID = require('mongoose').Types.ObjectId;
 
 // -------------require models----------  //
-//const ${modelName} = require('../models/${modelName}.model');
+const ${modelName} = require('../models/${modelName}.model');
 
 // -------------require validations----------  //
-//const { ${modelName}Validation } = require('../validations/${modelName}.validations');
+const { ${modelName}Validation } = require('../validations/${modelName}.validations');
 
 /* ! @Route  : GET => api/${modelName}s
      Desc    : Get all ${modelName}s
@@ -42,8 +42,8 @@ exports.getOne = async (req, res) => {
      @Access : Pubic
 */
 exports.add${modelName} = async (req, res) => {
-  // const { error } = ${modelName}Validation(req.body);
-  // error && res.status(400).json(error.details[0].message);
+   const { error } = ${modelName}Validation(req.body);
+   error && res.status(400).json(error.details[0].message);
   const ${modelName} = new ${modelName}({ ...req.body });
   try {
     const add${modelName} = await ${modelName}.save();
@@ -96,8 +96,8 @@ exports.update${modelName} = async (req, res) => {
     res
       .status(404)
       .json({ message: "l'ID "+req.params.id+" n'est pas reconnu" });
-  // const { error } = ${modelName}Validation(req.body);
-  // error && res.status(400).json(error.details[0].message);
+   const { error } = ${modelName}Validation(req.body);
+   error && res.status(400).json(error.details[0].message);
   try {
     await ${modelName}.findByIdAndUpdate(
       { _id: req.params.id },
